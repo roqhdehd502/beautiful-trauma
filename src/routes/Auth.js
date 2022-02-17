@@ -18,7 +18,7 @@ const Auth = () => {
     }
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event) => { // USER SIGNUP
     event.preventDefault();
     try {
       let data;
@@ -38,7 +38,7 @@ const Auth = () => {
   
   const toggleAccount = () => setNewAccount((prev) => !prev);
 
-  const onSocialClick = async (event) => {
+  const onSocialClick = async (event) => { // SOCIAL LOGIN
     const {
       target: { name },
     } = event;
