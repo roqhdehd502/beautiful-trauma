@@ -1,6 +1,8 @@
+
+import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
-import React from "react";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Trauma = ({ traumaObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -32,32 +34,38 @@ const Trauma = ({ traumaObj, isOwner }) => {
   };
 
   return (
-    <div>
+    <div className="nweet">
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="container nweetEdit">
             <input 
               type="text" 
               placeholder="수정" 
               value={newTrauma} 
               required
               onChange={onChange}
+              autoFocus
+              className="formInput"
             />
-            <input type="submit" value="수정하기" />
+            <input type="submit" value="수정하기" className="formBtn" />
           </form>
-          <button onClick={toggleEditing}>취소</button>
+          <span onClick={toggleEditing} className="formBtn cancelBtn">
+            취소
+          </span>
         </>
       ) : (
         <>
           <h4>{traumaObj.text}</h4>
-          {traumaObj.attachmentUrl && 
-            <img src={traumaObj.attachmentUrl} width="50px" height="50px" />
-          }
+          {traumaObj.attachmentUrl && <img src={traumaObj.attachmentUrl} />}
           {isOwner && (
-          <>
-            <button onClick={onDeleteClick}>삭제</button>
-            <button onClick={toggleEditing}>수정</button>
-          </>
+          <div className="nweet__actions">
+            <span onClick={onDeleteClick}>
+              <FontAwesomeIcon icon={faTrash} />
+            </span>
+            <span onClick={toggleEditing}>
+              <FontAwesomeIcon icon={faPencilAlt} />
+            </span>
+          </div>
           )}
         </>
       )} 
