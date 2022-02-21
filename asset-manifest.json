@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/beautiful-trauma/static/css/main.d34172d5.css",
+    "main.js": "/beautiful-trauma/static/js/main.d6bf5fdb.js",
+    "index.html": "/beautiful-trauma/index.html",
+    "main.d34172d5.css.map": "/beautiful-trauma/static/css/main.d34172d5.css.map",
+    "main.d6bf5fdb.js.map": "/beautiful-trauma/static/js/main.d6bf5fdb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d34172d5.css",
+    "static/js/main.d6bf5fdb.js"
+  ]
+}
