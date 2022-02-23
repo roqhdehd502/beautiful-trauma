@@ -55,18 +55,26 @@ const Trauma = ({ traumaObj, isOwner }) => {
         </>
       ) : (
         <>
-          <h4>{traumaObj.text}</h4>
-          {traumaObj.attachmentUrl && <img src={traumaObj.attachmentUrl} />}
           {isOwner && (
-          <div className="nweet__actions">
-            <span onClick={onDeleteClick}>
-              <FontAwesomeIcon icon={faTrash} />
-            </span>
-            <span onClick={toggleEditing}>
-              <FontAwesomeIcon icon={faPencilAlt} />
-            </span>
-          </div>
+          <>
+            <div className="nweet__actions">
+              <span onClick={onDeleteClick}>
+                <FontAwesomeIcon color={"#B667F1"} icon={faTrash} />
+              </span>
+              <span onClick={toggleEditing}>
+                <FontAwesomeIcon color={"#B667F1"} icon={faPencilAlt} />
+              </span>
+            </div>
+            <hr />
+          </>
           )}
+          
+          <div>
+            <h4>{traumaObj.text}</h4>
+            {traumaObj.attachmentUrl && (
+              <img src={traumaObj.attachmentUrl} />
+            )}
+          </div>
         </>
       )} 
     </div> 

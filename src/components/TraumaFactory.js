@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
 
 const TraumaFactory = ({ userObj }) => {
   const [trauma, setTrauma] = useState("");
@@ -68,8 +69,8 @@ const TraumaFactory = ({ userObj }) => {
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
       <label htmlFor="attach-file" className="factoryInput__label"> 
-      <span>첨부사진</span>
-        <FontAwesomeIcon icon={faPlus} />
+      <FontAwesomeIcon size="2x" icon={faImage} />&nbsp;
+      <FontAwesomeIcon size="sm" icon={faPlus} />
       </label>
       <input
         id="attach-file"
@@ -88,9 +89,9 @@ const TraumaFactory = ({ userObj }) => {
               backgroundImage: attachment,
             }}
           />
+          
           <div className="factoryForm__clear" onClick={onClearAttachment}>
-            <span>X</span>
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon size="2x" icon={faTimes} />
           </div>
         </div>
       )}
