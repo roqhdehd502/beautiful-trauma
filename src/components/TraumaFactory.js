@@ -3,16 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
 
 const TraumaFactory = ({ userObj }) => {
   const [trauma, setTrauma] = useState("");
   const [attachment, setAttachment] = useState("");
 
   const onSubmit = async (event) => { // CREATE
-    if (trauma === "") {
-      return;
-    }
+    if (trauma === "") { return; }
     event.preventDefault();
     let attachmentUrl = "";
     if(attachment !== "") {
@@ -69,8 +66,8 @@ const TraumaFactory = ({ userObj }) => {
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
       <label htmlFor="attach-file" className="factoryInput__label"> 
-      <FontAwesomeIcon size="2x" icon={faImage} />&nbsp;
-      <FontAwesomeIcon size="sm" icon={faPlus} />
+        <FontAwesomeIcon size="2x" icon={faImage} />&nbsp;
+        <FontAwesomeIcon size="sm" icon={faPlus} />
       </label>
       <input
         id="attach-file"
