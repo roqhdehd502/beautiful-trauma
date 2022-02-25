@@ -7,7 +7,7 @@ const Home = ({ userObj }) => {
   const [traumas, setTraumas] = useState([]);
 
   useEffect(() => {
-    dbService.collection("traumas").onSnapshot((snapshot) => { // snapshot: when updating db, alarm this
+    dbService.collection("traumas").orderBy("createAt", "desc").onSnapshot((snapshot) => { // snapshot: when updating db, alarm this
       const traumaArray = snapshot.docs.map(doc => ({
         id: doc.id, 
         ...doc.data(),
@@ -25,7 +25,7 @@ const Home = ({ userObj }) => {
           <Trauma 
             key={trauma.id} 
             traumaObj={trauma} 
-            isOwner={trauma.creatorId === userObj.uid} 
+            isOwner={trauma.creatorId === userObj.uid}
           />
         ))}
       </div>

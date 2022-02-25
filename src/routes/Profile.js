@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { authService, dbService } from "fbase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default ({ refreshUser, userObj }) => {
   const history = useHistory();
@@ -26,6 +24,7 @@ export default ({ refreshUser, userObj }) => {
       .where("creatorId", "==", userObj.uid)
       .orderBy("createdAt", "desc")
       .get(); // Data Query
+    // console.log(traumas.docs.map((doc) => doc.data()));
   };
 
   useEffect(() => {
@@ -65,6 +64,9 @@ export default ({ refreshUser, userObj }) => {
       <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
         로그아웃 
       </span>
+      <>
+        {getMyTraumas}
+      </>
     </div>
   );
 };
