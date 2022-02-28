@@ -60,7 +60,7 @@ const TraumaFactory = ({ userObj }) => {
           value={trauma}
           onChange={onChange}
           type="text"
-          placeholder="당신의 생각을 적어주세요"
+          placeholder="당신의 이야기를 적어주세요"
           maxLength={120}
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />

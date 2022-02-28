@@ -26,6 +26,7 @@ const Home = ({ userObj }) => {
             key={trauma.id} 
             traumaObj={trauma} 
             isOwner={trauma.creatorId === userObj.uid}
+            userObj={userObj} 
           />
         ))}
       </div>

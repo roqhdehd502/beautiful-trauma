@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt, faImage, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faImage, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const Trauma = ({ traumaObj, isOwner }) => {
+const Trauma = ({ traumaObj, isOwner, userObj }) => {
   const [editing, setEditing] = useState(false);
   const [newTrauma, setNewTrauma] = useState(traumaObj.text);
-  const [attachment, setAttachment] = useState("");
+  const [newAttachment, setNewAttachment] = useState("");
 
   const onDeleteClick = async () => { // DELETE
     const ok = window.confirm("정말 삭제하시겠습니까?");
@@ -21,24 +21,26 @@ const Trauma = ({ traumaObj, isOwner }) => {
   const toggleEditing = () => setEditing(prev => !prev);
 
   const onSubmit = async (event) => { // UPDATE
+    if (newTrauma === "") { return; }
     event.preventDefault();
-    // 변경시 기존 사진을 먼저 삭제하고
-    if(attachment !== "") {
-      await storageService.refFromURL(traumaObj.attachmentUrl).delete();
+    let newAttachmentUrl = "";
+    if(newAttachment !== "") {
+      if(traumaObj.attachmentUrl !== "") {
+        await storageService.refFromURL(traumaObj.attachmentUrl).delete();
+      }
+      const newAttachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+      const newResponse = await newAttachmentRef.putString(newAttachment, "data_url");
+      newAttachmentUrl = await newResponse.ref.getDownloadURL();
+    } else {
+      newAttachmentUrl = traumaObj.attachmentUrl;
     }
-     
-    // 내용과 사진을 업로드 한다.
-    let attachmentUrl = "";
-    if(attachment !== "") {
-      const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
-      const response = await attachmentRef.putString(attachment, "data_url");
-      attachmentUrl = await response.ref.getDownloadURL();
-    }
-    await dbService.doc(`traumas/${traumaObj.id}`).update({
+    console.log("newattachmentUrl: ", newAttachmentUrl);
+    const newTraumaObj = {
       text: newTrauma,
-      attachmentUrl,
-    }); // Find collection and field, then update this
-    setAttachment("");
+      attachmentUrl: newAttachmentUrl,
+    }
+    await dbService.doc(`traumas/${traumaObj.id}`).update(newTraumaObj); // Find collection and field, then update this
+    setNewAttachment("");
     setEditing(false);
   }
 
@@ -49,7 +51,7 @@ const Trauma = ({ traumaObj, isOwner }) => {
     setNewTrauma(value);
   };
 
-  const onFileChange = (event) => { // File uplaod event
+  const onNewFileChange = (event) => { // Update file uplaod event
     const { 
       target: { files },
     } = event;
@@ -59,12 +61,12 @@ const Trauma = ({ traumaObj, isOwner }) => {
       const {
         currentTarget: { result },
       } = finishedEvent;
-      setAttachment(result);
+      setNewAttachment(result);
     };
     reader.readAsDataURL(theFile);
   };
 
-  const onClearAttachment = () => setAttachment("");
+  const onClearNewAttachment = () => setNewAttachment("");
 
   function convertTime(createAt) {
     let presTime = Date.now()-createAt;
@@ -101,7 +103,7 @@ const Trauma = ({ traumaObj, isOwner }) => {
               <form onSubmit={onSubmit} className="container nweetEdit">
                 <input 
                   type="text" 
-                  placeholder="수정" 
+                  placeholder="수정할 이야기를 적어주세요" 
                   value={newTrauma} 
                   required
                   onChange={onChange}
@@ -111,28 +113,28 @@ const Trauma = ({ traumaObj, isOwner }) => {
                 {traumaObj.attachmentUrl && (
                   <img src={traumaObj.attachmentUrl} width={50} />
                 )}
-                <label htmlFor="attach-file" className="factoryInput__label" style={{ textAlign:"center", marginTop:10 }}>
+                <label htmlFor="new-attach-file" className="nweet__label">
                   <FontAwesomeIcon size="2x" icon={faImage} />&nbsp;
                   <FontAwesomeIcon size="sm" icon={faPlus} />
                 </label>
                 <input
-                  id="attach-file"
+                  id="new-attach-file"
                   type="file"
                   accept="image/*"
-                  onChange={onFileChange}
+                  onChange={onNewFileChange}
                   style={{
                     opacity: 0,
                   }}
                 />
-                {attachment && (
-                  <div className="factoryForm__attachment">
+                {newAttachment && (
+                  <div className="nweet__newAttachment">
                     <img
-                      src={attachment}
+                      src={newAttachment}
                       style={{
-                        backgroundImage: attachment,
+                        backgroundImage: newAttachment,
                       }}
                     />
-                    <div className="factoryForm__clear" onClick={onClearAttachment}>
+                    <div className="nweet__clear" onClick={onClearNewAttachment}>
                       <FontAwesomeIcon size="2x" icon={faTimes} />
                     </div>
                   </div>

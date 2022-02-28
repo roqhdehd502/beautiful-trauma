@@ -211,6 +211,41 @@ form {
   margin-right: 10px;
 }
 
+.nweet__newAttachment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nweet__newAttachment img {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+}
+
+.nweet__label {
+  color: #B667F1;
+  cursor: pointer;
+  text-align: center; 
+  margin-top: 10px;
+}
+
+.nweet__label span {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.nweet__clear {
+  color: #B667F1;
+  cursor: pointer;
+  text-align: center;
+}
+
+.nweet__clear span {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
 /* Auth */
 
 .authContainer {
