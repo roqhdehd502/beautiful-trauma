@@ -1,40 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { faBars, faHome, faHorse, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import BTLogo from "../BTLogo.png";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { SidebarData } from "./SidebarData";
 
-const Navigation = ({ userObj }) => (
-  <nav>
-   <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
-     <li>
-        <Link to="/" style={{ marginRight: 10 }}>
-          <img src={BTLogo} width="40px" height="40px" />
-        </Link>
-     </li>
-     <li>
-       {/* 나중에 프로필 사진도 첨부할 것: photoURL */}
-       <Link
-          to="/profile"
-          style={{
-            marginLeft: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            fontSize: 12,
-          }}
-        >
-          <FontAwesomeIcon icon={faUser} color={"#B667F1"} size="2x" />
-          <span style={{ marginTop: 10 }}>
-            {userObj.displayName
-              ? `${userObj.displayName}`
-              : "프로필"}
-          </span>
-        </Link>  
-     </li>
-   </ul>
-  </nav>
+const Navigation = ({ userObj }) => {
+  const [sidebar, setSidebar] = useState(false);
 
-);
+  const showSidebar = () => setSidebar(!sidebar);
+
+  return (
+    <>
+      <div>
+        <div className="navbar">
+          <Link to="#" className="menu-bars">
+            <FontAwesomeIcon icon={faBars} onClick={showSidebar} color={"#B667F1"} />
+          </Link>
+          <Link to="/" className="menu-bars-img">
+            <FontAwesomeIcon icon={faHome} size={"2x"} color={"#B667F1"} />
+          </Link>
+          <Link to="/profile" className="menu-bars-right">
+            {userObj.photoURL ? (
+              <img src={userObj.photoURL} />
+            ) : (
+              <img src={userObj.photoURL} />
+            )}
+          </Link>
+        </div>
+
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className="nav-menu-items" onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars">
+                <FontAwesomeIcon icon={faXmark} color={"#B667F1"} />
+              </Link>
+            </li>
+
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+    </>
+  );
+};
 
 export default Navigation;

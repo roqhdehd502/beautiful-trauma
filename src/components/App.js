@@ -3,6 +3,8 @@ import AppRouter from "components/Router";
 import { authService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Navigation from "./Navigation";
+import Footer from "./Footer";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -51,6 +53,8 @@ function App() {
           />
         </div>
       )}
+
+      <Footer />
     </>
   );
 }

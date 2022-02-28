@@ -3,7 +3,7 @@ import { authService, firebaseInstance } from "fbase";
 import AuthForm from "components/AuthForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
-import BTLogo from "../BTLogo.png";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
   
@@ -25,7 +25,8 @@ const Auth = () => {
 
   return (
     <div className="authContainer">
-      <img src={BTLogo} width="75px" height="75px" style={{ marginBottom: 30 }} />
+      <FontAwesomeIcon className="authHome" size="4x" color={"#B667F1"} icon={faLock} />
+
       <AuthForm />
 
       <div className="authBtns">

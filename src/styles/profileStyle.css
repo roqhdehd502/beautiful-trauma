@@ -1,0 +1,29 @@
+/* Profile Page */
+
+.profileForm {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  padding-bottom: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logOut {
+  margin-top: 50px;
+}
+
+.profile__row {
+  text-align: center;
+  justify-content: center;
+}
+
+.profile__profile {
+  text-align: center;
+}
+
+.profile__profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  margin-bottom: 40px;
+}

@@ -1,0 +1,95 @@
+/* Trauma */
+
+.traumaEdit .formBtn {
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.trauma {
+  margin-bottom: 20px;
+  background-color: white;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.trauma h4 {
+  font-size: 14px;
+}
+
+.trauma img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: auto;
+  max-width: 280px;
+  margin-top: 10px;
+} 
+
+.trauma__actions {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.trauma__actions span {
+  cursor: pointer;
+}
+
+.trauma__actions span:first-child {
+  margin-right: 10px;
+}
+
+.trauma__createAt {
+  font-size: small;
+  color: #9C51E0;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.trauma__content {
+  font-size: 15px;
+  word-wrap: normal;
+}
+
+.trauma__newAttachment {
+  flex-direction: column;
+  text-align: center; 
+  justify-content: center;
+}
+
+.trauma__newAttachment img {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+}
+
+.trauma__label {
+  color: #9C51E0;
+  cursor: pointer;
+  text-align: center; 
+  margin-top: 10px;
+}
+
+.trauma__label span {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.trauma__clear {
+  color: #9C51E0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.trauma__clear span {
+  margin-right: 10px;
+  font-size: 12px;
+}

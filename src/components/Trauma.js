@@ -34,7 +34,6 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
     } else {
       newAttachmentUrl = traumaObj.attachmentUrl;
     }
-    console.log("newattachmentUrl: ", newAttachmentUrl);
     const newTraumaObj = {
       text: newTrauma,
       attachmentUrl: newAttachmentUrl,
@@ -97,10 +96,10 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
   return (
     <>
       {isOwner && (
-        <div className="nweet">
+        <div className="trauma">
           {editing ? (
             <>
-              <form onSubmit={onSubmit} className="container nweetEdit">
+              <form onSubmit={onSubmit} className="container traumaEdit">
                 <input 
                   type="text" 
                   placeholder="수정할 이야기를 적어주세요" 
@@ -113,7 +112,7 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
                 {traumaObj.attachmentUrl && (
                   <img src={traumaObj.attachmentUrl} width={50} />
                 )}
-                <label htmlFor="new-attach-file" className="nweet__label">
+                <label htmlFor="new-attach-file" className="trauma__label">
                   <FontAwesomeIcon size="2x" icon={faImage} />&nbsp;
                   <FontAwesomeIcon size="sm" icon={faPlus} />
                 </label>
@@ -127,14 +126,14 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
                   }}
                 />
                 {newAttachment && (
-                  <div className="nweet__newAttachment">
+                  <div className="trauma__newAttachment">
                     <img
                       src={newAttachment}
                       style={{
                         backgroundImage: newAttachment,
                       }}
                     />
-                    <div className="nweet__clear" onClick={onClearNewAttachment}>
+                    <div className="trauma__clear" onClick={onClearNewAttachment}>
                       <FontAwesomeIcon size="2x" icon={faTimes} />
                     </div>
                   </div>
@@ -147,7 +146,7 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
             </>
           ) : (
             <>
-              <div className="nweet__actions">
+              <div className="trauma__actions">
                 <span onClick={onDeleteClick}>
                   <FontAwesomeIcon color={"#B667F1"} icon={faTrash} />
                 </span>
@@ -157,8 +156,8 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
               </div>
               <br />
               <div>
-                <h5>{convertTime(traumaObj.createAt)}</h5>
-                <h4>{traumaObj.text}</h4>
+                <h5 className="trauma__createAt">{convertTime(traumaObj.createAt)}</h5>
+                <h4 className="trauma__content">{traumaObj.text}</h4>
                 {traumaObj.attachmentUrl && (
                   <img src={traumaObj.attachmentUrl} />
                 )}

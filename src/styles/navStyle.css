@@ -1,0 +1,106 @@
+/* Navigation.js */
+
+.navbar {
+  background-color: #ECC488;
+  height: 50px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background:none;
+}
+
+.menu-bars-img {
+  margin-left: 20px;
+}
+
+.menu-bars-right {
+  position: absolute;
+  right: 0;
+  margin-right: 2rem;
+  background:none;
+}
+
+.menu-bars-right img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.nav-menu {
+  background-color: #ECC488;
+  width: 25%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style:none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.nav-text a:hover {
+  color: #8A39E1;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.nav__row {
+  text-align: left;
+  justify-content: center;
+}
+
+.nav__profile {
+  text-align: center;
+}
+
+.nav__profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  margin-bottom: 30px;
+}
+
+.navbar-toggle {
+  background-color: #ECC488;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}

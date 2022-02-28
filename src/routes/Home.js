@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { dbService } from "fbase";
 import Trauma from "components/Trauma";
 import TraumaFactory from "components/TraumaFactory";

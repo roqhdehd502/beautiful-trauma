@@ -28,6 +28,8 @@ const TraumaFactory = ({ userObj }) => {
     setAttachment("");
   };
 
+  const placeholder = `${userObj.displayName}님의 이야기를 적어주세요`;
+
   const onChange = (event) => { // Write event
     const { 
       target:{value}, 
@@ -60,7 +62,7 @@ const TraumaFactory = ({ userObj }) => {
           value={trauma}
           onChange={onChange}
           type="text"
-          placeholder="당신의 이야기를 적어주세요"
+          placeholder={placeholder}
           maxLength={120}
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
@@ -74,19 +76,14 @@ const TraumaFactory = ({ userObj }) => {
         type="file"
         accept="image/*"
         onChange={onFileChange}
-        style={{
-          opacity: 0,
-        }}
+        style={{ opacity: 0, }}
       />
       {attachment && (
         <div className="factoryForm__attachment">
           <img
             src={attachment}
-            style={{
-              backgroundImage: attachment,
-            }}
+            style={{ backgroundImage: attachment }}
           />
-          
           <div className="factoryForm__clear" onClick={onClearAttachment}>
             <FontAwesomeIcon size="2x" icon={faTimes} />
           </div>

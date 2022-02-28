@@ -1,0 +1,31 @@
+/* Footer */
+
+footer {
+  margin-top: 100px;
+  justify-content: center;
+  text-align: center;
+}
+
+.footerContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ECC488;
+  padding: 15px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.footerRow {
+  margin: 15px 0px 15px 0px;
+}
+
+.footerTitle {
+  color: #9C51E0;
+  font-size: small;
+  margin-bottom: 5px;
+}
+
+.footerContent {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
