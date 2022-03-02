@@ -43,9 +43,9 @@
   cursor: pointer;
 }
 
-.trauma__actions span:first-child {
-  margin-right: 10px;
-}
+/* .trauma__actions span:first-child {
+  margin-right: 2px;
+} */
 
 .trauma__createAt {
   font-size: small;

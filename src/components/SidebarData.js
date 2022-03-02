@@ -15,10 +15,4 @@ export const SidebarData = [
     icon: <FontAwesomeIcon icon={faUser} />,
     cName: 'nav-text'
   },
-  {
-    title: '통계',
-    path: '/profile',
-    icon: <FontAwesomeIcon icon={faChartBar} />,
-    cName: 'nav-text'
-  },
 ];

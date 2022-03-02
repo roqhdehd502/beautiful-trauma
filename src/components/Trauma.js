@@ -102,7 +102,7 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
               <form onSubmit={onSubmit} className="container traumaEdit">
                 <input 
                   type="text" 
-                  placeholder="수정할 이야기를 적어주세요" 
+                  placeholder="수정하실 이야기를 적어주세요" 
                   value={newTrauma} 
                   required
                   onChange={onChange}
@@ -140,7 +140,7 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
                 )}
                 <input type="submit" value="수정하기" className="formBtn" />
               </form>
-              <span onClick={toggleEditing} className="formBtn cancelBtn">
+              <span onClick={toggleEditing} className="formBtn cancelBtn" style={{marginLeft: 0}}>
                 취소
               </span>
             </>
@@ -156,7 +156,7 @@ const Trauma = ({ traumaObj, isOwner, userObj }) => {
               </div>
               <br />
               <div>
-                <h5 className="trauma__createAt">{convertTime(traumaObj.createAt)}</h5>
+                <h5 className="trauma__createAt">{convertTime(traumaObj.createAt)}에 작성</h5>
                 <h4 className="trauma__content">{traumaObj.text}</h4>
                 {traumaObj.attachmentUrl && (
                   <img src={traumaObj.attachmentUrl} />

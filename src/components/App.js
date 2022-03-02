@@ -3,8 +3,6 @@ import AppRouter from "components/Router";
 import { authService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import Navigation from "./Navigation";
-import Footer from "./Footer";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -38,12 +36,13 @@ function App() {
   
   return (
     <>
-      {init ? 
+      {init ? (
         <AppRouter 
           refreshUser={refreshUser} 
           isLoggedIn={Boolean(userObj)} 
           userObj={userObj} 
-        /> : (
+        />
+        ) : (
         <div className="appLoading">
           <FontAwesomeIcon 
             size={"4x"} 
@@ -54,7 +53,7 @@ function App() {
         </div>
       )}
 
-      <Footer />
+      
     </>
   );
 }

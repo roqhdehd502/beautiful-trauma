@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { authService, dbService } from "fbase";
 
 export default ({ refreshUser, userObj }) => {
@@ -50,17 +50,15 @@ export default ({ refreshUser, userObj }) => {
   return (
     <div className="container">
       <div className="profile__row">
-        <Link to="/profile">
-          {userObj.photoURL ? (
-            <span className="profile__profile">
-              <img src={userObj.photoURL} />
-            </span>
-          ) : (
-            <span className="profile__profile">
-              <img src={userObj.photoURL} />
-            </span>
-          )}
-        </Link>
+        {userObj.photoURL ? (
+          <span className="profile__profile" style={{marginLeft: 0}}>
+            <img src={userObj.photoURL} />
+          </span>
+        ) : (
+          <span className="profile__profile" style={{marginLeft: 0}}>
+            <img src={userObj.photoURL} />
+          </span>
+        )}
       </div>
 
       {proEditing ? (
@@ -79,7 +77,7 @@ export default ({ refreshUser, userObj }) => {
               value="프로필 변경"
               className="formBtn"
             />
-            <span onClick={toggleProEditing} className="formBtn cancelBtn">
+            <span onClick={toggleProEditing} className="formBtn cancelBtn" style={{marginLeft: 0}}>
               취소
             </span>
           </form>
@@ -90,13 +88,14 @@ export default ({ refreshUser, userObj }) => {
             <span 
               className="formBtn" 
               onClick={toggleProEditing}
+              style={{marginLeft: 0}}
             >
               {userObj.displayName}님의 프로필 변경 
             </span>
           </div>
         </>
       )}
-      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick} style={{marginLeft: 0}}>
         로그아웃 
       </span>
     </div>
